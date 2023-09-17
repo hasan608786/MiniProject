@@ -23,9 +23,9 @@ class CategoryGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return
       GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
         itemCount: organicProducts.length,
         itemBuilder: (context, index) => Padding(
@@ -59,15 +59,15 @@ class CategoryGrid extends StatelessWidget {
                           child: Center(
                               child: Image.asset('assets/images/Icon.png')),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         const Divider(
                           height: 5,
                           thickness: 2,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Text(
                           organicProducts[index]['name'],
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         const Spacer(),
                         Text(organicProducts[index]['category']),

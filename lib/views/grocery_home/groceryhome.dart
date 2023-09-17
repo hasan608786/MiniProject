@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:new1/views/grocery_home/recommended/recommended.dart';
 import 'package:new1/views/grocery_home/top/top.dart';
 
-import '../widgets/bottomnavbar/bottomnavbar.dart';
 import 'offers/offers.dart';
 
 class GroceryHome extends StatefulWidget {
@@ -33,17 +32,17 @@ class _GroceryHomeState extends State<GroceryHome> {
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.normal),
                 ),
               ),
-              RecommendedScreen(
+              const RecommendedScreen(
                 name: '',
                 category: '',
                 price: '',
               ),
-              RecommendedScreen(
+              const RecommendedScreen(
                 name: '',
                 category: '',
                 price: '',
               ),
-              RecommendedScreen(
+              const RecommendedScreen(
                 name: '',
                 category: '',
                 price: '',

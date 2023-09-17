@@ -71,7 +71,7 @@ class _ProductDesignState extends State<ProductDesign> {
                       const Divider(),
                       Text(
                         widget.name,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       const Spacer(),
                       Text(widget.category),
@@ -96,7 +96,7 @@ class _ProductDesignState extends State<ProductDesign> {
                             const SizedBox(
                               width: 3,
                             ),
-                            Text("\$" + widget.price),
+                            Text("\$${widget.price}"),
                             const Spacer(),
                             AddToCart(
                                 name: widget.name,

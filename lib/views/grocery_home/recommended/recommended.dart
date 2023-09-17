@@ -1,11 +1,8 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:new1/constant/colors.dart';
 import 'package:new1/model/recommendedmodel.dart';
-import 'package:new1/views/detail_screen/detail_screen.dart';
 import 'package:new1/views/grocery_home/recommended/product_design.dart';
-import 'package:new1/views/widgets/add_to_cart.dart';
 
 import '../../../model/recommended_product.dart';
 
@@ -13,7 +10,7 @@ class RecommendedScreen extends StatefulWidget {
   final String name;
   final String category;
   final String price;
-  RecommendedScreen(
+  const RecommendedScreen(
       {super.key,
       required this.name,
       required this.category,

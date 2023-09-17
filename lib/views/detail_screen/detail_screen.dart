@@ -40,7 +40,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 height: 60,
                 width: 180,
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: AppColor.blueColor),
-                child: Center(child: Text('Buy Now',style: TextStyle(fontSize: 18,color: Colors.white),)),
+                child: const Center(child: Text('Buy Now',style: TextStyle(fontSize: 18,color: Colors.white),)),
               ),
             ],
           ),
@@ -61,14 +61,14 @@ class _DetailScreenState extends State<DetailScreen> {
               ),
             ), //FlexibleSpaceBar
             expandedHeight: 350,
-            actionsIconTheme: IconThemeData(color: Colors.lightBlue,weight: 5),
+            actionsIconTheme: const IconThemeData(color: Colors.lightBlue,weight: 5),
             actions: [
               CircleAvatar(
                 backgroundColor: Colors.white,
                 child: CartIcon(color: Colors.black),
               )
             ],
-            title: Text(widget.name,style: TextStyle(color: Colors.black)),
+            title: Text(widget.name,style: const TextStyle(color: Colors.black)),
             leading: CircleAvatar(
               backgroundColor: Colors.white,
               child: IconButton(
@@ -84,7 +84,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 padding: const EdgeInsets.only(left: 10,right: 10),
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(35)),
+                    borderRadius: const BorderRadius.all(Radius.circular(35)),
                     color: Colors.grey.shade200,
                   ),
                   child: Stack(
@@ -94,14 +94,14 @@ class _DetailScreenState extends State<DetailScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Thin Choice Top \n${widget.name}',style: TextStyle(fontSize: 34,fontWeight: FontWeight.bold)),
-                            SizedBox(
+                            Text('Thin Choice Top \n${widget.name}',style: const TextStyle(fontSize: 34,fontWeight: FontWeight.bold)),
+                            const SizedBox(
                               height: 20,
                             ),
                             Row(
                               children: [
                                 Text("\$${widget.price}/KG",style: TextStyle(color: AppColor.blueColor,fontSize: 20,fontWeight: FontWeight.bold)),
-                                SizedBox(
+                                const SizedBox(
                                   width: 25,
                                 ),
                                 Container(
@@ -109,58 +109,58 @@ class _DetailScreenState extends State<DetailScreen> {
                                     width: 90,
                                     decoration: BoxDecoration(
                                       color: AppColor.blueColor,
-                                      borderRadius: BorderRadius.all(Radius.circular(15))
+                                      borderRadius: const BorderRadius.all(Radius.circular(15))
                                     ),
-                                    child: Center(child: Text("\$22 OFF",style: TextStyle(letterSpacing: 2,color: Colors.white,fontSize: 15)))),
-                                Spacer(),
-                                Text("Reg: \$56.50 USD",style: TextStyle(color: Colors.grey,fontSize: 18)),
+                                    child: const Center(child: Text("\$22 OFF",style: TextStyle(letterSpacing: 2,color: Colors.white,fontSize: 15)))),
+                                const Spacer(),
+                                const Text("Reg: \$56.50 USD",style: TextStyle(color: Colors.grey,fontSize: 18)),
                               ],
                             ),
-                            SizedBox(height: 20,),
-                            RatingStar(),
-                            SizedBox(height: 20,),
+                            const SizedBox(height: 20,),
+                            const RatingStar(),
+                            const SizedBox(height: 20,),
                             Row(
                               children: [
-                                Text('Detail',style: TextStyle(fontSize: 20),),
-                                Spacer(),
+                                const Text('Detail',style: TextStyle(fontSize: 20),),
+                                const Spacer(),
                                 IconButton(onPressed: () {
                                   isExpand;
                                   setState(() {
                                     isExpand = !isExpand;
                                   });
                                 },
-                                    icon:  !isExpand ? Icon(Icons.expand_less,size: 40,color: Colors.grey) : Icon(Icons.expand_more,size: 40,color: Colors.grey))
+                                    icon:  !isExpand ? const Icon(Icons.expand_less,size: 40,color: Colors.grey) : const Icon(Icons.expand_more,size: 40,color: Colors.grey))
                               ],
                             ),
-                            !isExpand ? Text("Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.",style: TextStyle(color: Colors.grey,fontSize: 18),) : Divider(color: Colors.grey,height: 20,thickness: 1.5,),
+                            !isExpand ? const Text("Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.",style: TextStyle(color: Colors.grey,fontSize: 18),) : const Divider(color: Colors.grey,height: 20,thickness: 1.5,),
                             Row(
                               children: [
-                                Text('Nutritional facts',style: TextStyle(fontSize: 20),),
-                                Spacer(),
+                                const Text('Nutritional facts',style: TextStyle(fontSize: 20),),
+                                const Spacer(),
                                 IconButton(onPressed: () {
                                   isExpand1;
                                   setState(() {
                                     isExpand1 = !isExpand1;
                                   });
                                 },
-                                    icon:  !isExpand1 ? Icon(Icons.expand_less,size: 40,color: Colors.grey) : Icon(Icons.expand_more,size: 40,color: Colors.grey))
+                                    icon:  !isExpand1 ? const Icon(Icons.expand_less,size: 40,color: Colors.grey) : const Icon(Icons.expand_more,size: 40,color: Colors.grey))
                               ],
                             ),
-                            !isExpand1 ? Text("Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.",style: TextStyle(color: Colors.grey,fontSize: 18),) : Divider(color: Colors.grey,height: 20,thickness: 1.5,),
+                            !isExpand1 ? const Text("Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.",style: TextStyle(color: Colors.grey,fontSize: 18),) : const Divider(color: Colors.grey,height: 20,thickness: 1.5,),
                             Row(
                               children: [
-                                Text('Reviews',style: TextStyle(fontSize: 20),),
-                                Spacer(),
+                                const Text('Reviews',style: TextStyle(fontSize: 20),),
+                                const Spacer(),
                                 IconButton(onPressed: () {
                                   isExpand2;
                                   setState(() {
                                     isExpand2 = !isExpand2;
                                   });
                                 },
-                                    icon:  !isExpand2 ? Icon(Icons.expand_less,size: 40,color: Colors.grey,) : Icon(Icons.expand_more,size: 40,color: Colors.grey))
+                                    icon:  !isExpand2 ? const Icon(Icons.expand_less,size: 40,color: Colors.grey,) : const Icon(Icons.expand_more,size: 40,color: Colors.grey))
                               ],
                             ),
-                            !isExpand2 ? Text("Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.",style: TextStyle(color: Colors.grey,fontSize: 18),) : Divider(color: Colors.grey,height: 20,thickness: 1.5,),
+                            !isExpand2 ? const Text("Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.",style: TextStyle(color: Colors.grey,fontSize: 18),) : const Divider(color: Colors.grey,height: 20,thickness: 1.5,),
                           ],
                         ),
                       ),

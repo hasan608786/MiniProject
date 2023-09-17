@@ -19,20 +19,19 @@ class AddToCart extends StatefulWidget {
 }
 
 class _AddToCartState extends State<AddToCart> {
+
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         [
-          CartProducts.cartProduct.add(widget.name),
-          CartProducts.cartProduct.add(widget.price),
-          CartProducts.cartProduct.add(widget.category)
+          CartProducts.cartProduct.add({'name' :widget.name, 'category' :widget.category,'price' :widget.price}),
         ];
 
         if (kDebugMode) {
-          print(CartProducts.cartProduct.length);
+          print(CartProducts.cartProduct);
         }
-        setState(() {});
       },
       child: Container(
         height: 20,
@@ -65,65 +64,85 @@ class _AddToCartScreenState extends State<AddToCartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: AppColor.lightYellowColor,
-        height: 270,
-        width: MediaQuery.of(context).size.width,
-        child: Stack(
-          children: [
-            Image.asset('assets/icon/#.png'),
-            Positioned(
-                bottom: 65,
-                right: 55,
-                child: Image.asset('assets/icon/25%.png')),
-            Positioned(
-                bottom: 150,
-                right: 55,
-                child: Image.asset('assets/icon/OFF!!.png')),
-            Positioned(
-                bottom: 170,
-                right: 55,
-                child: Image.asset('assets/icon/Vector 368.png')),
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: IconButton(
-                        icon: const Icon(Icons.arrow_back_ios_sharp, size: 15),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        }),
-                  ),
-                  const SizedBox(width: 25),
-                  const Text('Shopping Cart()',
-                      style: TextStyle(
-                          color: Colors.black,
-                          letterSpacing: 1.5,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 17)),
-                ],
-              ),
-            ),
-            Positioned(
-              bottom: 0,
-              child: Container(
-                color: AppColor.yellowColor,
-                height: 55,
-                width: MediaQuery.of(context).size.width,
-                child: const Center(
-                  child: Text("Use code #HalalFood at Checkout",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22.0,
-                      ) //TextStyle
+      body: Column(
+        children: [
+          Container(
+            color: AppColor.lightYellowColor,
+            height: 270,
+            width: MediaQuery.of(context).size.width,
+            child:
+            Stack(
+              children: [
+                Image.asset('assets/icon/#.png'),
+                Positioned(
+                    bottom: 65,
+                    right: 55,
+                    child: Image.asset('assets/icon/25%.png')),
+                Positioned(
+                    bottom: 150,
+                    right: 55,
+                    child: Image.asset('assets/icon/OFF!!.png')),
+                Positioned(
+                    bottom: 170,
+                    right: 55,
+                    child: Image.asset('assets/icon/Vector 368.png')),
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: IconButton(
+                            icon: const Icon(Icons.arrow_back_ios_sharp, size: 15),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            }),
                       ),
-                ), //Text
-              ),
-            )
-          ],
-        ),
+                      const SizedBox(width: 25),
+                      Text('Shopping Cart(${CartProducts.cartProduct.length})',
+                          style: const TextStyle(
+                              color: Colors.black,
+                              letterSpacing: 1.5,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 17)),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  child: Container(
+                    color: AppColor.yellowColor,
+                    height: 55,
+                    width: MediaQuery.of(context).size.width,
+                    child: const Center(
+                      child: Text("Use code #HalalFood at Checkout",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 22.0,
+                          ) //TextStyle
+                          ),
+                    ), //Text
+                  ),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 300,
+            child: ListView.builder(
+              shrinkWrap: false,
+              itemCount: CartProducts.cartProduct.length,
+              itemBuilder: (context, index)
+              =>
+                      ListTile(
+                        leading: Image.asset('assets/images/Icon.png'),
+                        title: Text(CartProducts.cartProduct[index]['name'],style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                        subtitle: Text('\$'+CartProducts.cartProduct[index]['price'],style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w500)),
+                        trailing: const Text('-  0  +',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500)),
+                      ),
+                    ),
+          )
+        ],
       ),
       bottomNavigationBar: const BottomAppBar1(),
     );
@@ -153,7 +172,10 @@ class BottomAppBar1 extends StatelessWidget {
               children: [
                 Text('Subtotal',style: TextStyle(fontSize: 18,color: Colors.grey.shade600)),
                 const Spacer(),
-                const Text("\$39.50",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
+                // Text('\$'+ '${
+                //     (CartProducts.cartProduct[0]['price'] as int) *
+                //      ( CartProducts.cartProduct[0]['price'])
+                // }',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
               ],
             ),
           ),

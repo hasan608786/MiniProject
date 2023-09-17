@@ -12,9 +12,9 @@ class RatingStar extends StatelessWidget {
         Icon(Icons.star,color: AppColor.yellowColor,),
         Icon(Icons.star,color: AppColor.yellowColor,),
         Icon(Icons.star,color: AppColor.yellowColor,),
-        Icon(Icons.star,),
-        SizedBox(width: 5,),
-        Text('133 Reviews',style: TextStyle(fontSize: 16,color: Colors.grey),)
+        const Icon(Icons.star,),
+        const SizedBox(width: 5,),
+        const Text('133 Reviews',style: TextStyle(fontSize: 16,color: Colors.grey),)
       ],
     );
   }

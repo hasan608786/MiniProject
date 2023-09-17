@@ -3,8 +3,6 @@ import 'package:new1/category/main_category.dart';
 import 'package:new1/views/widgets/bottomnavbar/bottomnavbar.dart';
 
 import '../../grocery_home/groceryhome.dart';
-import '../../grocery_home/top/top.dart';
-import '../../onboardingscreen/onboardingscreen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,10 +17,10 @@ class _HomeState extends State<Home> {
 
 
   final screens = [
-    GroceryHome(),
-    Category(),
-    Center(child: Text('To be Process')),
-    Center(child: Text('To be Process')),
+    const GroceryHome(),
+    const Category(),
+    const Center(child: Text('To be Process')),
+    const Center(child: Text('To be Process')),
   ];
 
 

@@ -1,23 +1,22 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../grocery_home/groceryhome.dart';
 import '../widgets/bottomnavbar/navigation_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  const  OnboardingScreen({super.key});
+  const OnboardingScreen({super.key});
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  final controller = PageController(initialPage: 0);
 
- @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-  }
+  int _current = 0;
+  final CarouselController _controller = CarouselController();
+  final List textList = [1, 2];
+  var myGroup = AutoSizeGroup();
 
   @override
   Widget build(BuildContext context) {
@@ -27,93 +26,86 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         padding: const EdgeInsets.only(left: 75, right: 75),
         child: Column(
           children: [
-            SizedBox(
-              height: 415,
-              child:
-              PageView(
-                controller: controller,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        '\n\nYour holiday \nshopping \ndelivered to Screen \none\n',
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white),
-                      ),
-                      Text(
-                        "There's something for everyone \nto enjoy with Sweet Shop \nFavourites Screen 1\n\n",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white),
-                      ),
-                      Row(
+            Stack(
+              children: [
+                SizedBox(
+                  height: 400,
+                  child: CarouselSlider(
+                    items: const [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                              height: 5,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.white,
-                              )),
-                          const SizedBox(
-                            width: 10,
+                          AutoSizeText(
+                            '\n\nYour holiday \nshopping \ndelivered to Screen \none\n',
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
                           ),
-                          Container(
-                              height: 5,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.grey,
-                              )),
+                          AutoSizeText(
+                            "There's something for everyone \nto enjoy with Sweet Shop \nFavourites Screen 1\n\n",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AutoSizeText(
+                            '\n\nYour holiday \nshopping \ndelivered to Screen \ntwo\n',
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
+                          ),
+                          AutoSizeText(
+                            "There's something for everyone \nto enjoy with Sweet Shop \nFavourites Screen 2\n\n",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
+                          ),
                         ],
                       ),
                     ],
+                    carouselController: _controller,
+                    options: CarouselOptions(
+                        enlargeCenterPage: true,
+                        aspectRatio: 1,
+                        initialPage: 0,
+                        viewportFraction: 1,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            _current = index;
+                          });
+                        }),
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        '\n\nYour holiday \nshopping \ndelivered to Screen \ntwo\n',
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white),
-                      ),
-                      Text(
-                        "There's something for everyone \nto enjoy with Sweet Shop \nFavourites Screen 2\n\n",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white),
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                              height: 5,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.grey,
-                              )),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                              height: 5,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.white,
-                              )),
-                        ],
-                      ),
-
-                    ],
+                ),
+                Positioned(
+                  left: 0,
+                  top: 320,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: textList.asMap().entries.map((entry) {
+                      return GestureDetector(
+                        onTap: () => _controller.animateToPage(entry.key),
+                        child: Container(
+                          width: (_current == entry.key) ? 50 : 30,
+                          height: 5,
+                          margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25),
+                              color:
+                              (_current == entry.key) ? Colors.white : Colors.grey),
+                        ),
+                      );
+                    }).toList(),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
 
             const Spacer(),
@@ -121,19 +113,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             const Spacer(),
             GestureDetector(
               onTap: () {
-                if( controller.page == 0){
-                  controller.nextPage(duration: Duration(milliseconds: 150), curve: Curves.linear);
-                }if(controller.page == 1 ){
-
+                if (_current == 0) {
+                  _controller.nextPage(
+                      duration: const Duration(milliseconds: 150),
+                      curve: Curves.linear);
+                }
+                if (_current == 1) {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const Home(),
                       ));
                 }
-                setState(() {
-
-                });
+                setState(() {});
               },
               child: Container(
                 height: 70,
@@ -163,3 +155,4 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 }
+
