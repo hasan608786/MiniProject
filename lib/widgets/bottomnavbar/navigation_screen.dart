@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new1/category/main_category.dart';
-import 'package:new1/views/widgets/bottomnavbar/bottomnavbar.dart';
-
-import '../../grocery_home/groceryhome.dart';
+import '../../views/grocery_home/groceryhome.dart';
+import 'bottomnavbar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

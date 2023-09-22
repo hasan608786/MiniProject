@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constant/colors.dart';
-import '../../views/widgets/cart_icon.dart';
+import '../../widgets/cart_icon.dart';
 
 class CategoryTop extends StatefulWidget {
   const CategoryTop({super.key});
@@ -70,16 +70,6 @@ class _CategoryTopState extends State<CategoryTop> {
                         width: 15,
                       ),
                       CartIcon(),
-                      // Badge(
-                      //   backgroundColor: AppColor.yellowColor,
-                      //   alignment: AlignmentDirectional.topEnd,
-                      //   largeSize: 15,
-                      //   textStyle: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),
-                      //   textColor: Colors.yellow,
-                      //   label: Text("22"),
-                      //   isLabelVisible: true,
-                      //   child: Icon(Icons.shopping_cart,color: Colors.white),
-                      // ),
                     ],
                   ),
                   const Spacer(),

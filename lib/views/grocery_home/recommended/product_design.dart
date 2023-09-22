@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../constant/colors.dart';
+import '../../../widgets/add_to_cart.dart';
 import '../../detail_screen/detail_screen.dart';
-import '../../widgets/add_to_cart.dart';
 
 class ProductDesign extends StatefulWidget {
   final String name;

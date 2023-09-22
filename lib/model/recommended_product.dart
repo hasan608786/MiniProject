@@ -15,3 +15,4 @@ class RecommendedProduct{
   static var itemCount = products.length;
 
 }
+

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:new1/constant/colors.dart';
-import 'package:new1/views/widgets/cart_icon.dart';
-import 'package:new1/views/widgets/rating_star.dart';
+import 'package:new1/favorite/favorite_screen.dart';
+
+import '../../widgets/cart_icon.dart';
+import '../../widgets/rating_star.dart';
 
 class DetailScreen extends StatefulWidget {
   final String name, category, price;
@@ -20,6 +22,7 @@ class _DetailScreenState extends State<DetailScreen> {
   bool isExpand = true;
   bool isExpand1 = true;
   bool isExpand2 = true;
+  bool favorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +97,19 @@ class _DetailScreenState extends State<DetailScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Thin Choice Top \n${widget.name}',style: const TextStyle(fontSize: 34,fontWeight: FontWeight.bold)),
+                            Row(
+                              children: [
+                                Text('Thin Choice Top \n${widget.name}',style: const TextStyle(fontSize: 34,fontWeight: FontWeight.bold)),
+                                Spacer(),
+                                IconButton(onPressed: (){
+                                  FavoriteScreen.favorite.add(
+                                      {'name': widget.name,'price': widget.price,});
+                                  setState(() {
+                                    favorite = !favorite;
+                                  });
+                                }, icon: favorite==false? Icon(Icons.favorite_border): Icon(Icons.favorite,color: Colors.red,))
+                              ],
+                            ),
                             const SizedBox(
                               height: 20,
                             ),

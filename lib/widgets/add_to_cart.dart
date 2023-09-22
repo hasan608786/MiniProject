@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:new1/constant/colors.dart';
-
 import '../../cart_product/cart_product.dart';
+import '../model/recommended_product.dart';
 
 class AddToCart extends StatefulWidget {
   final String name;
@@ -12,7 +12,7 @@ class AddToCart extends StatefulWidget {
       {super.key,
       required this.name,
       required this.price,
-      required this.category});
+      required this.category,});
 
   @override
   State<AddToCart> createState() => _AddToCartState();
@@ -25,8 +25,9 @@ class _AddToCartState extends State<AddToCart> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+
         [
-          CartProducts.cartProduct.add({'name' :widget.name, 'category' :widget.category,'price' :widget.price}),
+          CartProducts.cartProduct.add({'name' :widget.name, 'category' :widget.category,'price' :widget.price,}),
         ];
 
         if (kDebugMode) {
@@ -127,20 +128,36 @@ class _AddToCartScreenState extends State<AddToCartScreen> {
               ],
             ),
           ),
-          SizedBox(
-            height: 300,
-            child: ListView.builder(
-              shrinkWrap: false,
-              itemCount: CartProducts.cartProduct.length,
-              itemBuilder: (context, index)
-              =>
-                      ListTile(
-                        leading: Image.asset('assets/images/Icon.png'),
-                        title: Text(CartProducts.cartProduct[index]['name'],style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
-                        subtitle: Text('\$'+CartProducts.cartProduct[index]['price'],style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w500)),
-                        trailing: const Text('-  0  +',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500)),
+          Padding(
+            padding: const EdgeInsets.only(top: 30,left: 20,right: 20),
+            child: SizedBox(
+              height: 270,
+              child: ListView.builder(
+                shrinkWrap: false,
+                itemCount: CartProducts.cartProduct.length,
+                itemBuilder: (context, index)
+                =>
+                        Row(
+                          children: [
+                            Image.asset('assets/images/Icon.png',height: 50),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(CartProducts.cartProduct[index]['name'],style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                                Text('\$'+CartProducts.cartProduct[index]['price'],style: const TextStyle(fontSize: 18,fontWeight: FontWeight.normal)),
+                              ],
+                            ),
+                            Spacer(),
+                            IconButton(onPressed: (){}, icon: Icon(Icons.remove)),
+                            Text('0'),
+                            IconButton(onPressed: (){}, icon: Icon(Icons.add)),
+                          ],
+                        ),
                       ),
-                    ),
+            ),
           )
         ],
       ),

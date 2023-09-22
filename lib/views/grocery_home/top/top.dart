@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new1/constant/colors.dart';
-import 'package:new1/views/widgets/cart_icon.dart';
+import '../../../widgets/cart_icon.dart';
 
 class Top extends StatelessWidget {
   const Top({super.key});
